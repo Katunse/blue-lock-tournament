@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Мой сайт</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  header {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  header button {
+    padding: 10px 20px;
+    color: white;
+    background-color: #555;
+    border: none;
+    cursor: pointer;
+  }
+  header button:hover {
+    background-color: #777;
+  }
+  section {
+    padding: 50px;
+    min-height: 100vh;
+  }
+  #mainPart {
+    background-color: #f0f0f0;
+  }
+  #applicationForm {
+    background-color: #e0e0e0;
+    max-width: 400px;
+    margin: auto;
+    padding:20px;
+    border-radius:8px;
+  }
+  #applicationForm input {
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+    border-radius:4px;
+    border:1px solid #ccc;
+  }
+  #applicationForm button {
+    width:100%;
+    padding:10px;
+    background-color:#333;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+  }
+  #applicationForm button:hover {
+    background-color:#555;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button onclick="scrollToSection('mainPart')">Основная часть</button>
+  <button onclick="showForm()">Отправить заявку</button>
+</header>
+
+<section id="mainPart">
+<h2>Основная часть сайта(Для отправления заявки, сначала нажмите на кнопку"Отправить заявку", и пролистайте вниз)</h2>
+<section style="background-color:#f0f4f8; padding:40px; font-family:Arial, sans-serif; color:#333;">
+  <h1 style="text-align:center; color:#2c3e50;">Турнир по игре <strong>Blue Lock: Rivals</strong></h1>
+  <h2 style="text-align:center; color:#2980b9; margin-top:20px;">Вступай в команду чемпионов!</h2>
+  
+  <div style="max-width:800px; margin:0 auto; padding:20px;">
+    <h3 style="color:#16a085;">Основные правила турнира:</h3>
+    <ul style="line-height:1.6;">
+      <li><strong>Команды:</strong> 5 игроков против 5.</li>
+      <li><strong>Стиль игры:</strong> Используются только 4 разрешенных стиля:
+        <ul>
+          <li>Исаги</li>
+          <li>Чигири</li>
+          <li>Игагури</li>
+          <li>Гагамару</li>
+        </ul>
+        Каждый стиль обязательно применяется в матче, а пятый — по выбору команды (может дублироваться).</li>
+      <li><strong>Потоки:</strong> Все уровни — от обычных до легендарных. Чем выше поток — тем больше шансов на победу!</li>
+      <li><strong>Формат игры:</strong> Рандомная сетка, матч по правилам Blue Lock: Rivals.</li>
+      <li><strong>Подсчет очков:</strong></li>
+        <ul>
+          <li>Поражение — минус 1 очко</li>
+          <li>Ничья — 1 очко</li>
+          <li>Победа — 2 очка</li>
+        </ul>
+      <li><strong>Финал:</strong> Проходят две лучшие команды и лучшие игроки из проигравших.(2ое)</li>
+    </ul>
+
+    
+    <ul style="line-height:1.6;">
+      <li>Игра проводится без читов и запрещенных программ.</li>
+      <li>Используются только разрешенные стили и потоки.</li>
+      <li>Вылет из матча — дисквалификация (кроме условий Wild Card).</li>
+      <li><strong>В случае нарушения правил — дисквалификация без права апелляции.</strong></li>
+    </ul>
+
+   
+    <p style="font-size:1.1em;">Проигравший игрок получает один шанс вернуться в проект! Для этого нужно выиграть матч против проигравших и стать лучшим игроком этого матча, при этом ты должен победить.</p>
+
+    
+
+    <p style="margin-top:40px; text-align:center; font-style:italic;">Готов к вызову? Докажи свою силу и стань чемпионом Blue Lock!</p>
+  </div>
+</section>
+</section>
+
+<section id="applicationSection" style="display:none;">
+<h2>Форма заявки</h2>
+<form id="applicationForm">
+<label for="robloxNick">Ник в Roblox:</label><br/>
+<input type="text" id="robloxNick" name="robloxNick" required /><br/>
+<label for="mainNick">Основной ник:</label><br/>
+<input type="text" id="mainNick" name="mainNick" required /><br/>
+<button type="submit">Отправить</button>
+</form>
+</section>
+
+<!-- Модальное окно для ссылки -->
+<div id="popup" style="
+display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+background-color:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+<div style="
+background:#fff; padding:20px; border-radius:8px; max-width:400px; text-align:center;">
+<p>Спасибо! Вот ссылка на нашу группу:</p>
+<a href="https://t.me/+35nUBXTSe3Y1MWMy" target="_blank">Перейти в Telegram группу</a><br/><br/>
+<button onclick="closePopup()">Закрыть</button>
+</div>
+</div>
+
+<script>
+// Плавная прокрутка
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// Показ формы
+function showForm() {
+  document.getElementById('applicationSection').style.display='block';
+}
+
+// Обработка формы
+document.getElementById('applicationForm').addEventListener('submit', function(e){
+ e.preventDefault();
+
+ const robloxNick = document.getElementById('robloxNick').value.trim();
+ const mainNick = document.getElementById('mainNick').value.trim();
+
+ // Отправка данных через Formspree или другой сервис
+ fetch('https://formspree.io/f/manjqjab', { // замените на ваш URL
+   method:'POST',
+   headers:{
+     'Content-Type':'application/json'
+   },
+   body: JSON.stringify({
+     roblox_nick : robloxNick,
+     main_nick : mainNick,
+     _subject:'Заявка с сайта'
+   })
+ }).then(response => {
+   if(response.ok) {
+     // Показываем окно с ссылкой
+     document.getElementById('popup').style.display='flex';
+     // очищаем форму
+     document.getElementById('applicationForm').reset();
+   } else {
+     alert('Ошибка при отправке. Попробуйте еще раз.');
+   }
+ }).catch(error => {
+   alert('Ошибка при отправке. Попробуйте еще раз.');
+ });
+});
+
+// Закрытие окна
+function closePopup() {
+ document.getElementById('popup').style.display='none';
+}
+</script>
+
+<!-- Подключите свой Formspree URL -->
+<!-- Для этого создайте форму на https://formspree.io/ и вставьте свой URL вместо 'https://formspree.io/f/your-form-id' -->
+
+</body>
+</html>
